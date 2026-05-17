@@ -1,0 +1,50 @@
+<?php
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TechStackController;
+use Illuminate\Support\Facades\Route;
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/', 'home');
+    Route::get('/services', 'services');
+    Route::get('/project', 'project');
+    Route::get('/projects', 'projects');
+    Route::get('/contact', 'contact');
+});
+
+Route::controller(SessionController::class)->group(function(){
+    Route::get('/login', 'login')->middleware('guest')->name('login');
+    Route::post('/login', 'create')->middleware('guest');
+    Route::post('/logout', 'logout')->middleware('auth');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function(){
+
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/', 'dashboard');
+        Route::get('/category', 'category');
+        Route::get('/project', 'project');
+        Route::get('/seo', 'seo');
+        Route::get('/tech-stack', 'techStack');
+        Route::get('/messages', 'messages');
+        Route::get('/general', 'general');
+    });
+
+    Route::controller(CategoryController::class)->group(function(){
+        Route::post('/category', 'create');
+        Route::get('/category/{category}/edit', 'edit');
+        Route::patch('/category/{category}/update', 'update');
+        Route::delete('/category/{category}/delete', 'destroy');
+    });
+
+    Route::controller(TechStackController::class)->group(function(){
+        Route::post('/tech-stack', 'create');
+        Route::get('/tech-stack/{techstack}/edit', 'edit');
+        Route::patch('/tech-stack/{techstack}/update', 'update');
+        Route::delete('/tech-stack/{techstack}/delete', 'delete');
+    });
+
+});
