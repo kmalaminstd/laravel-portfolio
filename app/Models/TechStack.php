@@ -9,4 +9,8 @@ class TechStack extends Model
 
     protected $guarded = [];
 
+    public function project(){
+        return $this->belongsTo(Project::class);
+    }
+
 }

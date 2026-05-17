@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\TechStack;
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('project_tech_stack', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->boolean('status')->default(false);
-            $table->string('live_link')->nullable();
-            $table->string('github_link')->nullable();
-            $table->text('short_summary');
-            $table->text('description');
+            $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TechStack::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('project_tech_stacks');
     }
 };

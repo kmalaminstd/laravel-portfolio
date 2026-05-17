@@ -14,7 +14,11 @@ class AdminController extends Controller
     }
 
     public function project(){
-        return view('admin.projects');
+
+        $techStacks = TechStack::latest()->get();
+        $categories = Category::latest()->get();
+
+        return view('admin.projects', compact(['techStacks', 'categories']));
     }
 
     public function category(){

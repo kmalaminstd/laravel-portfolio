@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TechStackController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function(){
@@ -45,6 +46,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
         Route::get('/tech-stack/{techstack}/edit', 'edit');
         Route::patch('/tech-stack/{techstack}/update', 'update');
         Route::delete('/tech-stack/{techstack}/delete', 'delete');
+    });
+
+    Route::controller(ProjectController::class)->group(function(){
+        Route::post('/project', 'create');
     });
 
 });

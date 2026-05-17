@@ -6,46 +6,59 @@
 <!-- Add/Edit Form Section (Collapsed by default, shown via JS or just kept visible for the template) -->
         <div class="glass-card p-4 mb-4">
             <h5 class="text-white mb-4">Add New Project</h5>
-            <form>
+            <form method="POST" action="/admin/project" enctype="multipart/form-data">
+                @csrf
                 <div class="row g-4">
                     <div class="col-md-6">
                         <label class="form-label">Project Title</label>
-                        <input type="text" class="form-control form-control-custom" placeholder="e.g., E-Commerce Platform">
+                        <input type="text" name="title" value="{{ old('title') }}" class="form-control form-control-custom" placeholder="e.g., E-Commerce Platform">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Project Categories (comma separated)</label>
-                        <input type="text" class="form-control form-control-custom" placeholder="e.g., laravel, fullstack">
+                        <label class="form-label">Project Categories</label>
+                        <select class="form-control form-control-custom" name="category_id">
+                            <option value="">Select Category</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Tech Stacks (comma separated)</label>
-                        <input type="text" class="form-control form-control-custom" placeholder="e.g., PHP, Vue.js, MySQL">
+                        <label class="form-label">Tech Stacks</label>
+                        <div class="d-flex gap-4 flex-wrap">
+                            @foreach ($techStacks as $tech)                                
+                                <label>
+                                    {{ $tech->name }}
+                                    <input name="tech_id[]" type="checkbox" value="{{ $tech->id }}">
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
-                        <select class="form-control form-control-custom">
+                        <select class="form-control form-control-custom" name="status">
                             <option value="published">Published</option>
                             <option value="draft">Draft</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Live Link (Optional)</label>
-                        <input type="url" class="form-control form-control-custom" placeholder="https://...">
+                        <input type="url" name="live_link" class="form-control form-control-custom" placeholder="https://...">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">GitHub Link (Optional)</label>
-                        <input type="url" class="form-control form-control-custom" placeholder="https://github.com/...">
+                        <input type="url" name="github_link" class="form-control form-control-custom" placeholder="https://github.com/...">
                     </div>
                     <div class="col-md-12">
                         <label class="form-label">Short Summary</label>
-                        <input type="text" class="form-control form-control-custom" placeholder="A brief description...">
+                        <input type="text" name="short_summary" class="form-control form-control-custom" placeholder="A brief description...">
                     </div>
                     <div class="col-12">
                         <label class="form-label">Detailed Overview</label>
-                        <textarea id="jodit_rich_editor" class="form-control form-control-custom" rows="4" placeholder="Full project description, problem & solution..."></textarea>
+                        <textarea id="jodit_rich_editor" name="description" class="form-control form-control-custom" rows="4" placeholder="Full project description, problem & solution...">{{ old('description') }}</textarea>
                     </div>
                     <div class="col-12">
                         <label class="form-label">Upload Images (Main Thumbnail + Screenshots)</label>
-                        <input class="form-control form-control-custom" type="file" id="formFileMultiple" multiple>
+                        <input name="feature_image" class="form-control form-control-custom" type="file" id="formFileMultiple" multiple>
                     </div>
                     <div class="col-12 text-end mt-4">
                         <button type="button" class="btn btn-outline-secondary me-2 text-white border-secondary">Cancel</button>
