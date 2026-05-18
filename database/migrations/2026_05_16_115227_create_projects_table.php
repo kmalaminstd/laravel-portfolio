@@ -27,6 +27,10 @@ return new class extends Migration
             $table->text('short_summary');
             $table->longText('description');
 
+            $table->string('client')->nullable();
+            $table->string('role');
+            $table->string('timeline')->nullable();
+
             $table->timestamps();
         });
     }

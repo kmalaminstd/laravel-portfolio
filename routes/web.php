@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'home');
     Route::get('/services', 'services');
-    Route::get('/project', 'project');
     Route::get('/projects', 'projects');
     Route::get('/contact', 'contact');
 });
@@ -20,6 +19,10 @@ Route::controller(SessionController::class)->group(function(){
     Route::get('/login', 'login')->middleware('guest')->name('login');
     Route::post('/login', 'create')->middleware('guest');
     Route::post('/logout', 'logout')->middleware('auth');
+});
+
+Route::controller(ProjectController::class)->group(function(){
+    Route::get('/project/{project}', 'details');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function(){
@@ -50,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 
     Route::controller(ProjectController::class)->group(function(){
         Route::post('/project', 'create');
+        Route::get('/project/{project}/edit', 'edit');
+        Route::patch('/project/{project}/update', 'update');
+        Route::delete('/project/{project}/delete', 'destroy');
     });
 
 });

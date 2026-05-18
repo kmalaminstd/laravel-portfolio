@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     
     public function home(){
-        return view('home.index');
+        $projects = Project::latest()->where('status', true)->take(2)->get();
+        return view('home.index', compact(['projects']));
     }
 
     public function contact(){
         return view('home.contact');
     }
 
-    public function project(){
-        return view('home.project');
-    }
+
 
     public function projects(){
-        return view('home.projects');
+        $projects = Project::latest()->where("status", true)->paginate(30);
+        return view('home.projects', compact(['projects']));
     }
 
     public function services(){

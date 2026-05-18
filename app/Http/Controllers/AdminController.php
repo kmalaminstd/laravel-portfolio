@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Project;
 use App\Models\TechStack;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class AdminController extends Controller
 
         $techStacks = TechStack::latest()->get();
         $categories = Category::latest()->get();
+        $projects = Project::latest()->with(['category', 'projectMedia'])->paginate(30);
 
-        return view('admin.projects', compact(['techStacks', 'categories']));
+        return view('admin.projects', compact(['techStacks', 'categories', 'projects']));
     }
 
     public function category(){

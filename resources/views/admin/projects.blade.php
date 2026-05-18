@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-12">
                         <label class="form-label">Detailed Overview</label>
-                        <textarea id="jodit_rich_editor" name="description" class="form-control form-control-custom" rows="4" placeholder="Full project description, problem & solution...">{{ old('description') }}</textarea>
+                        <textarea id="jodit_rich_editor" name="description" class="form-control text-black form-control-custom" rows="4" placeholder="Full project description, problem & solution...">{{ old('description') }}</textarea>
                     </div>
                     <div class="col-12">
                         <label class="form-label">Upload Images (Main Thumbnail + Screenshots)</label>
@@ -82,20 +82,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="rounded" width="40" height="40" style="object-fit: cover;">
-                                    <span class="text-white">E-Commerce SaaS Platform</span>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-secondary bg-opacity-25 text-light">laravel, fullstack</span></td>
-                            <td><span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Published</span></td>
-                            <td class="text-end">
-                                <button class="btn btn-sm btn-outline-info border-0"><i class="ph ph-pencil-simple fs-5"></i></button>
-                                <button class="btn btn-sm btn-outline-danger border-0"><i class="ph ph-trash fs-5"></i></button>
-                            </td>
-                        </tr>
+
+                        @forelse ($projects as $project)     
+                            {{-- {{ dd($project) }} --}}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        @foreach($project->projectMedia as $med)
+                                            @if ($med->media->featured)             
+                                                <img src="{{ asset('/storage/' . $med->media->src) }}" class="rounded" width="40" height="40" style="object-fit: cover;">
+                                            @endif
+                                        @endforeach
+                                        <span class="text-dark">{{ $project->title }}</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-secondary bg-opacity-25 text-dark">{{ $project->category->name }}</span></td>
+                                <td><span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">{{ $project->status ? "Published" : "Unpublished" }}</span></td>
+                                <td class="text-end">
+                                    <a href="/admin/project/{{ $project->id }}/edit" class="btn btn-sm btn-outline-info border-0"><i class="ph ph-pencil-simple fs-5"></i></a>
+                                    <form method="POST" action="/admin/project/{{$project->id}}/delete">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-sm btn-outline-danger border-0"><i class="ph ph-trash fs-5"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <p>No Project Added</p>
+                        @endforelse
+
                         <!-- More rows... -->
                     </tbody>
                 </table>
@@ -107,7 +122,8 @@
             document.addEventListener('DOMContentLoaded', ()=> {
                 // console.log(Jodit)
                 Jodit.make('#jodit_rich_editor',{
-                    height: 600
+                    height: 600,
+                    colorPickerDefaultTab: "#000"
                 })
             })
         </script>

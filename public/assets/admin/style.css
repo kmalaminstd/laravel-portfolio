@@ -236,3 +236,7 @@ body {
 .tech-card:hover .actions {
     opacity: 1;
 }
+
+.jodit-container * {
+    color: initial;
+}

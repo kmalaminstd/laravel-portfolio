@@ -8,10 +8,6 @@ class Project extends Model
 {
     protected $guarded = [];
 
-    public function project(){
-        return $this->belongsToMany(Project::class);
-    }
-
     public function techStacks()
     {
         return $this->belongsToMany(TechStack::class);
@@ -26,6 +22,6 @@ class Project extends Model
     }
 
     public function projectMedia(){
-        return $this->belongsToMany(ProjectMedia::class);
+        return $this->hasMany(ProjectMedia::class);
     }
 }

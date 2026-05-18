@@ -217,48 +217,37 @@
 
                 <div class="row g-4">
                     <!-- Project 1 -->
-                    <div class="col-lg-6 gs_reveal_up">
-                        <div class="glass-card overflow-hidden project-card h-100 group">
-                            <div class="position-relative overflow-hidden" style="height: 300px;">
-                                <div class="position-absolute w-100 h-100 bg-dark opacity-50 z-1 project-overlay transition-smooth"></div>
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover transition-smooth project-img" alt="Project 1">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2 project-btns text-center w-100">
-                                    <a href="work-details.html" class="btn-custom btn-primary-custom mx-1 scale-0 transition-smooth btn-project">Details</a>
-                                    <a href="#" class="btn-custom btn-outline-custom mx-1 bg-dark bg-opacity-50 scale-0 transition-smooth btn-project">Live</a>
+                    @foreach ($projects as $project)                        
+                        <div class="col-lg-6 gs_reveal_up">
+                            <div class="glass-card overflow-hidden project-card h-100 group">
+                                <div class="position-relative overflow-hidden" style="height: 300px;">
+                                    <div class="position-absolute w-100 h-100 bg-dark opacity-50 z-1 project-overlay transition-smooth"></div>
+                                    @foreach ($project->projectMedia as $pm)
+                                        
+                                        @if ($pm->media->featured)                                            
+                                            <img src="{{ asset('/storage/' . $pm->media->src ) }}" class="w-100 h-100 object-fit-cover transition-smooth project-img" alt="Project 1">
+                                        @endif
+                                    @endforeach
+                                    <div class="position-absolute top-50 start-50 translate-middle z-2 project-btns text-center w-100">
+                                        <a href="/project/{{ $project->id }}" class="btn-custom btn-primary-custom mx-1 scale-0 transition-smooth btn-project">Details</a>
+                                        @if ($project->live_link)                                           
+                                            <a href="{{ $project->live_link }}" class="btn-custom btn-outline-custom mx-1 bg-dark bg-opacity-50 scale-0 transition-smooth btn-project">Live</a>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex gap-2 mb-3">
-                                    <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25 tech-font">Laravel</span>
-                                    <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25 tech-font">Vue.js</span>
+                                <div class="p-4">
+                                    <div class="d-flex gap-2 mb-3">
+                                        @foreach ($project->techStacks as $stack)                                            
+                                            <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25 tech-font">{{ $stack->name }}</span>
+                                        @endforeach
+                                    </div>
+                                    <h4 class="text-white mb-2">{{ $project->title }}</h4>
+                                    <p class="mb-0">{{ $project->short_summary }}</p>
                                 </div>
-                                <h4 class="text-white mb-2">E-Commerce SaaS Platform</h4>
-                                <p class="mb-0">A multi-tenant e-commerce platform with robust inventory management and payment gateways.</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="col-lg-6 gs_reveal_up" data-delay="0.2">
-                        <div class="glass-card overflow-hidden project-card h-100 group">
-                            <div class="position-relative overflow-hidden" style="height: 300px;">
-                                <div class="position-absolute w-100 h-100 bg-dark opacity-50 z-1 project-overlay transition-smooth"></div>
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover transition-smooth project-img" alt="Project 2">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2 project-btns text-center w-100">
-                                    <a href="work-details.html" class="btn-custom btn-primary-custom mx-1 scale-0 transition-smooth btn-project">Details</a>
-                                    <a href="#" class="btn-custom btn-outline-custom mx-1 bg-dark bg-opacity-50 scale-0 transition-smooth btn-project">Live</a>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex gap-2 mb-3">
-                                    <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25 tech-font">PHP</span>
-                                    <span class="badge bg-opacity-10 bg-warning text-warning border border-warning border-opacity-25 tech-font">MySQL</span>
-                                </div>
-                                <h4 class="text-white mb-2">University Management System</h4>
-                                <p class="">Comprehensive portal for students and faculty handling attendance, grades, and schedules.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+ 
                 </div>
                 
                 <div class="text-center mt-5 d-md-none gs_reveal">
