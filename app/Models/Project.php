@@ -24,4 +24,16 @@ class Project extends Model
     public function projectMedia(){
         return $this->hasMany(ProjectMedia::class);
     }
+
+    public function challenge(){
+        return $this->hasOne(Challenge::class);
+    }
+
+    public function process(){
+        return $this->hasMany(Process::class);
+    }
+
+    public function feature(){
+        return $this->hasMany(Feature::class);
+    }
 }

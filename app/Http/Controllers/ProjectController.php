@@ -31,6 +31,10 @@ class ProjectController extends Controller
             'short_summary' => 'required|string|max:1000',
             'description' => 'required|string',
 
+            'client' => 'required',
+            'role' => 'required',
+            'timeline' => 'required',
+
             'feature_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
@@ -60,6 +64,10 @@ class ProjectController extends Controller
             'live_link' => $attributes['live_link'] ?? null,
             'github_link' => $attributes['github_link'] ?? null,
 
+            'client' => $attributes['client'],
+            'role' => $attributes['role'],
+            'timeline' => $attributes['timeline'],
+
             'short_summary' => $attributes['short_summary'],
             'description' => $attributes['description'],
         ]);
@@ -77,6 +85,49 @@ class ProjectController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Project created successfully');
+
+    }
+
+    public function addImages(Project $project, Request $request){
+
+        $attributes = $request->validate([
+
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
+
+        foreach ($request->file('images') as $image) {
+
+            // store image
+            $path = $image->store('media', 'public');
+
+            // create media
+            $media = Media::create([
+                'src' => $path,
+                'featured' => false,
+            ]);
+
+            // attach image to project
+            $project->projectMedia()->create([
+                'media_id' => $media->id,
+            ]);
+        }
+
+        return redirect()
+            ->back()
+            ->with('success', 'Images uploaded successfully');
+
+    }
+
+    public function deleleImage(ProjectMedia $projectmedia){
+
+        Storage::delete($projectmedia->media->src);
+
+        $projectmedia->media->delete();
+
+        $projectmedia->delete();
+
+        return back();
 
     }
 
@@ -108,6 +159,10 @@ class ProjectController extends Controller
 
             'short_summary' => 'required|string|max:1000',
             'description' => 'required|string',
+
+            'client' => 'required',
+            'role' => 'required',
+            'timeline' => 'required',
 
             'feature_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
@@ -157,6 +212,10 @@ class ProjectController extends Controller
             'live_link' => $attributes['live_link'] ?? null,
             'github_link' => $attributes['github_link'] ?? null,
 
+            'client' => $attributes['client'],
+            'role' => $attributes['role'],
+            'timeline' => $attributes['timeline'],
+
             'short_summary' => $attributes['short_summary'],
             'description' => $attributes['description'],
         ]);
@@ -168,6 +227,8 @@ class ProjectController extends Controller
             ->back()
             ->with('success', 'Project updated successfully');
     }
+
+    
 
     public function details(Project $project){
         return view('home.project', compact(['project']));

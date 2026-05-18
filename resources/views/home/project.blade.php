@@ -70,21 +70,26 @@
                                 <ul class="list-unstyled mb-0">
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Client</span>
-                                        <span class="text-white fw-medium">TechNova Solutions</span>
+                                        <span class="text-white fw-medium">{{ $project->client }}</span>
                                     </li>
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Role</span>
-                                        <span class="text-white fw-medium">Lead Backend Developer</span>
+                                        <span class="text-white fw-medium">{{ $project->role }}</span>
                                     </li>
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Timeline</span>
-                                        <span class="text-white fw-medium">4 Months</span>
+                                        <span class="text-white fw-medium">{{ $project->timeline }}</span>
                                     </li>
                                     <li>
                                         <span class=" d-block small mb-2">Links</span>
                                         <div class="d-flex gap-2 flex-column">
-                                            <a href="#" class="btn-custom btn-primary-custom w-100 text-center"><i class="ph ph-link me-2"></i> Live Preview</a>
-                                            <a href="#" class="btn-custom btn-outline-custom w-100 text-center bg-dark bg-opacity-50"><i class="ph-fill ph-github-logo me-2"></i> Source Code</a>
+                                            @if ($project->live_link)                                                
+                                                <a href="{{ $project->live_link }}" class="btn-custom btn-primary-custom w-100 text-center"><i class="ph ph-link me-2"></i> Live Preview</a>
+                                            @endif
+
+                                            @if ($project->github_link)                                                
+                                                <a href="{{ $project->github_link }}" class="btn-custom btn-outline-custom w-100 text-center bg-dark bg-opacity-50"><i class="ph-fill ph-github-logo me-2"></i> Source Code</a>
+                                            @endif
                                         </div>
                                     </li>
                                 </ul>

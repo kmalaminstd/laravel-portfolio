@@ -35,6 +35,22 @@
                             @endforeach
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Client</label>
+                        <input type="text" name="client" class="form-control form-control-custom" placeholder="A brief description...">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Role</label>
+                        <input type="text" name="role" class="form-control form-control-custom" placeholder="A Bakend Developer">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Timeline</label>
+                        <input type="text" name="client" class="form-control form-control-custom" placeholder="A 4 Months">
+                    </div>
+
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
                         <select class="form-control form-control-custom" name="status">

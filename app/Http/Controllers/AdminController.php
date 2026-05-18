@@ -18,7 +18,7 @@ class AdminController extends Controller
 
         $techStacks = TechStack::latest()->get();
         $categories = Category::latest()->get();
-        $projects = Project::latest()->with(['category', 'projectMedia'])->paginate(30);
+        $projects = Project::latest()->with(['category', 'projectMedia', 'challenge', 'feature', 'process', 'projectMedia'])->paginate(30);
 
         return view('admin.projects', compact(['techStacks', 'categories', 'projects']));
     }

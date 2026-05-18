@@ -6,6 +6,9 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TechStackController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\ProcessController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function(){
@@ -53,9 +56,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 
     Route::controller(ProjectController::class)->group(function(){
         Route::post('/project', 'create');
+        Route::post('/project/images/{project}/add-multiple', 'addImages');
+        Route::delete('/project/image/{projectmedia}/delete', 'deleleImage');
         Route::get('/project/{project}/edit', 'edit');
         Route::patch('/project/{project}/update', 'update');
         Route::delete('/project/{project}/delete', 'destroy');
+    });
+
+    Route::controller(FeatureController::class)->group(function(){
+        Route::post("/feature/{project}", 'create');
+        Route::delete("/feature/{feature}/delete", 'destroy');
+    });
+
+    Route::controller(ProcessController::class)->group(function(){
+        Route::post("/process/{project}", 'create');
+        Route::delete("/process/{process}/delete", 'destroy');
+    });
+
+    Route::controller(ChallengeController::class)->group(function(){
+        Route::post("/challenge/{project}", 'create');
+        Route::delete("/challenge/{challenge}/delete", 'destroy');
     });
 
 });
