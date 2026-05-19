@@ -13,7 +13,7 @@
                     <div class="col-lg-7 z-1">
                         <div class="hero-content">
                             <span class="d-inline-block px-3 py-1 rounded-pill mb-3 tech-font fs-6" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.2);">
-                                👋 Hello, World!
+                                Hey , 
                             </span>
                             <h1 class="display-3 fw-bold mb-3 hero-title">
                                 I'm <span class="text-gradient">K.M. AL-AMIN</span><br>
@@ -58,48 +58,16 @@
                 <h2 class="section-title mb-5 gs_reveal">My Tech Arsenal</h2>
                 <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 mt-4 justify-content-center tech-cards-container">
                     <!-- Cards -->
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="fa-brands fa-php text-gradient fs-1 mb-2 text-white"></i>
-                            <h6 class="mb-0 tech-font fw-bold">PHP</h6>
+                    @foreach ($techs as $tech)                        
+                        <div class="col gs_reveal_scale">
+                            <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
+                                <p class="fs-1 mb-2">
+                                    {!! $tech->icon !!}
+                                </p>
+                                <h6 class="mb-0 tech-font fw-bold">{{ $tech->name }}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="fa-brands fa-laravel text-gradient fs-1 mb-2 text-white"></i>
-                            <h6 class="mb-0 tech-font fw-bold">Laravel</h6>
-                        </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="ph-fill ph-database text-gradient fs-1 mb-2"></i>
-                            <h6 class="mb-0 tech-font fw-bold">MySQL</h6>
-                        </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="ph-fill ph-file-js text-gradient fs-1 mb-2"></i>
-                            <h6 class="mb-0 tech-font fw-bold">JavaScript</h6>
-                        </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="fa-brands fa-bootstrap text-gradient fs-1 mb-2 text-white"></i>
-                            <h6 class="mb-0 tech-font fw-bold">Bootstrap</h6>
-                        </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="ph-fill ph-git-merge text-gradient fs-1 mb-2"></i>
-                            <h6 class="mb-0 tech-font fw-bold">GitHub</h6>
-                        </div>
-                    </div>
-                    <div class="col gs_reveal_scale">
-                        <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                            <i class="ph-fill ph-plug text-gradient fs-1 mb-2"></i>
-                            <h6 class="mb-0 tech-font fw-bold">REST API</h6>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -212,46 +180,21 @@
                         <h2 class="section-title mb-0">Featured Projects</h2>
                         <p class="mt-3 mb-0">Some of my recent and impactful works.</p>
                     </div>
-                    <a href="works.html" class="btn-custom btn-outline-custom d-none d-md-inline-flex">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
+                    <a href="/projects" class="btn-custom btn-outline-custom d-none d-md-inline-flex">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
                 </div>
 
                 <div class="row g-4">
                     <!-- Project 1 -->
                     @foreach ($projects as $project)                        
                         <div class="col-lg-6 gs_reveal_up">
-                            <div class="glass-card overflow-hidden project-card h-100 group">
-                                <div class="position-relative overflow-hidden" style="height: 300px;">
-                                    <div class="position-absolute w-100 h-100 bg-dark opacity-50 z-1 project-overlay transition-smooth"></div>
-                                    @foreach ($project->projectMedia as $pm)
-                                        
-                                        @if ($pm->media->featured)                                            
-                                            <img src="{{ asset('/storage/' . $pm->media->src ) }}" class="w-100 h-100 object-fit-cover transition-smooth project-img" alt="Project 1">
-                                        @endif
-                                    @endforeach
-                                    <div class="position-absolute top-50 start-50 translate-middle z-2 project-btns text-center w-100">
-                                        <a href="/project/{{ $project->id }}" class="btn-custom btn-primary-custom mx-1 scale-0 transition-smooth btn-project">Details</a>
-                                        @if ($project->live_link)                                           
-                                            <a href="{{ $project->live_link }}" class="btn-custom btn-outline-custom mx-1 bg-dark bg-opacity-50 scale-0 transition-smooth btn-project">Live</a>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="d-flex gap-2 mb-3">
-                                        @foreach ($project->techStacks as $stack)                                            
-                                            <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25 tech-font">{{ $stack->name }}</span>
-                                        @endforeach
-                                    </div>
-                                    <h4 class="text-white mb-2">{{ $project->title }}</h4>
-                                    <p class="mb-0">{{ $project->short_summary }}</p>
-                                </div>
-                            </div>
+                            <x-home.project-card :project="$project" />
                         </div>
                     @endforeach
  
                 </div>
                 
                 <div class="text-center mt-5 d-md-none gs_reveal">
-                    <a href="works.html" class="btn-custom btn-outline-custom">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
+                    <a href="/projects" class="btn-custom btn-outline-custom">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
                 </div>
             </div>
         </section>
@@ -386,7 +329,7 @@
                 <div class="glass-card p-5 text-center neon-border gs_reveal_scale">
                     <h2 class="display-5 fw-bold mb-4">Have an idea in mind?</h2>
                     <p class="lead mb-5 max-w-2xl mx-auto">Let's collaborate and turn your vision into a stunning digital reality. I am currently available for freelance work.</p>
-                    <a href="contact.html" class="btn-custom btn-primary-custom btn-lg fs-5 px-5">Let's Talk <i class="ph ph-paper-plane-tilt ms-2"></i></a>
+                    <a href="/contact" class="btn-custom btn-primary-custom btn-lg fs-5 px-5">Let's Talk <i class="ph ph-paper-plane-tilt ms-2"></i></a>
                 </div>
             </div>
         </section>

@@ -39,26 +39,43 @@
 
                         <!-- Screenshots Gallery -->
                         <div class="mb-5">
-                            <h3 class="fw-bold mb-4 gs_reveal">Screenshots</h3>
+                            <h3 class="fw-bold mb-4 gs_reveal">Screenshots</h3>                                
+                            
                             <div class="row g-4">
-                                <div class="col-md-6 gs_reveal_up">
-                                    <div class="overflow-hidden rounded-3 border border-secondary border-opacity-25">
-                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="document.getElementById('modalImage').src=this.src">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 gs_reveal_up" data-delay="0.2">
-                                    <div class="overflow-hidden rounded-3 border border-secondary border-opacity-25">
-                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Analytics" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="document.getElementById('modalImage').src=this.src">
-                                    </div>
-                                </div>
-                                <div class="col-12 gs_reveal_up">
-                                    <div class="overflow-hidden rounded-3 border border-secondary border-opacity-25">
-                                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Code" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="document.getElementById('modalImage').src=this.src">
-                                    </div>
-                                </div>
+
+                                @foreach ($project->projectMedia as $pm)
+                                    @if (!$pm->media->featured)                                        
+                                        <div class="col-md-6 gs_reveal_up">
+                                            <div class="overflow-hidden rounded-3 border border-secondary border-opacity-25">
+                                                <img src="{{ asset('/storage/' . $pm->media->src) }}" alt="Dashboard" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="document.getElementById('modalImage').src=this.src">
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+
+                                
                             </div>
+
                         </div>
 
+                        <!-- Dev Process -->
+                        <div class="glass-card p-4 p-md-5 mb-5 gs_reveal_up">
+                            <h3 class="fw-bold mb-4">Development Process</h3>
+                            <ul class="list-unstyled">
+                                @foreach ($project->process as $process)                                    
+                                    <li class="mb-3 d-flex gap-3">
+                                        <i class="ph-fill ph-check-circle text-accent-cyan mt-1 fs-5"></i>
+                                        <span><strong>{{ $process->name }}</strong> {{ $process->description }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <h4 class="fw-bold mt-5 mb-3 text-white">Challenges Faced</h4>
+                            <p class="">
+                                {{-- {{ dd($process->challenge) }} --}}
+                                {{ $project->challenge->description }}
+                            </p>
+                        </div>
                         
                     </div>
 
@@ -98,12 +115,9 @@
                             <div class="glass-card p-4 gs_reveal_right" data-delay="0.2">
                                 <h5 class="fw-bold mb-4 text-white">Key Features</h5>
                                 <ul class=" ps-3 mb-0">
-                                    <li class="mb-2">Multi-tenant Architecture</li>
-                                    <li class="mb-2">Role-Based Access Control (RBAC)</li>
-                                    <li class="mb-2">Stripe Connect Integration</li>
-                                    <li class="mb-2">Real-time Analytics Dashboard</li>
-                                    <li class="mb-2">Automated Invoice Generation</li>
-                                    <li>Redis Caching Setup</li>
+                                    @foreach ($project->feature as $feat)                                        
+                                        <li class="mb-2">{{ $feat->name }}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'home');
-    Route::get('/services', 'services');
+    // Route::get('/services', 'services');
     Route::get('/projects', 'projects');
     Route::get('/contact', 'contact');
 });

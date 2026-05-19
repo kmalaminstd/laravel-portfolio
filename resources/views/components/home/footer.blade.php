@@ -4,7 +4,7 @@
             <div class="row g-4 mb-4">
                 <div class="col-lg-4">
                     <a class="navbar-brand text-white fw-bold fs-4 font-heading mb-3 d-inline-block" href="index.html">
-                        <span class="text-gradient">DEV</span>ALAMIN.
+                        <span class="text-gradient">K.M.</span>ALAMIN.
                     </a>
                     <p class="pe-lg-5">A passionate PHP & Laravel Developer crafting robust backend logic and scalable web applications.</p>
                     <div class="d-flex gap-3 mt-4">
@@ -17,10 +17,10 @@
                 <div class="col-lg-2 col-6">
                     <h5 class="text-white mb-4">Quick Links</h5>
                     <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#home" class="text-white hover-cyan transition-smooth">Home</a></li>
-                        <li><a href="#about" class="text-white hover-cyan transition-smooth">About</a></li>
-                        <li><a href="#services" class="text-white hover-cyan transition-smooth">Services</a></li>
-                        <li><a href="works.html" class="text-white hover-cyan transition-smooth">Works</a></li>
+                        <li><a href="/" class="text-white hover-cyan transition-smooth">Home</a></li>
+                        <li><a href="{{ url('/#about') }}" class="text-white hover-cyan transition-smooth">About</a></li>
+                        <li><a href="/projects" class="text-white hover-cyan transition-smooth">Works</a></li>
+                        <li><a href="/contact" class="text-white hover-cyan transition-smooth">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-6">
