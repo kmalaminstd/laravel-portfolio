@@ -166,6 +166,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="/admin/feature/{{ $project->id }}">
+                                @csrf
                                 <div class="col-12">
                                     <label class="form-label">Feature Name:</label>
                                     <input type="text" name="name" class="form-control form-control-custom" placeholder="A brief description...">
@@ -206,6 +207,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="/admin/process/{{ $project->id }}">
+                                @csrf
                                 <div class="col-12">
                                     <label class="form-label">Process Name:</label>
                                     <input type="text" name="name" class="form-control form-control-custom" placeholder="A brief description...">
@@ -249,6 +251,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="/admin/challenge/{{ $project->id }}">
+                                @csrf
                                 <div class="col-12">
                                     <label class="form-label">Description:</label>
                                     <textarea  name="description" class="form-control form-control-custom" placeholder="A brief description..."></textarea>
@@ -287,6 +290,7 @@
                         </div>
                         <div class="modal-body">
                             <form enctype="multipart/form-data" method="POST" action="/admin/project/images/{{ $project->id }}/add-multiple">
+                                @csrf
                                 <div class="col-12">
                                     <label class="form-label">Select Images:</label>
                                     <input type="file" accept="image/*" name="images[]" multiple class="form-control form-control-custom" placeholder="A brief description...">
