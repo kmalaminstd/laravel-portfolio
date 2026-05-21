@@ -245,8 +245,8 @@
                             <div class="position-relative z-1 row g-4 align-items-center">
                                 <!-- Left Column: Role & Company -->
                                 <div class="col-lg-4 border-end border-secondary border-opacity-25 pe-lg-4">
-                                    <h4 class="text-white fw-bold mb-2">Frontend Developer</h4>
-                                    <h6 class="text-gradient mb-3">World Academy for Research & Development, UK</h6>
+                                    <h4 class="text-white fw-bold mb-2">Web Designer</h4>
+                                    <h6 class="text-gradient mb-3">World Academy for Research & Development</h6>
                                     <div class="d-inline-flex align-items-center bg-dark bg-opacity-50 px-3 py-2 rounded-pill tech-font small mb-4">
                                         <i class="ph-fill ph-calendar-blank text-accent-cyan me-2"></i> Apr 2025 - Present
                                     </div>
@@ -257,12 +257,9 @@
                                         <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">CSS</span>
                                         <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25">Bootstrap</span>
                                         <span class="badge bg-opacity-10 bg-warning text-warning border border-warning border-opacity-25">JavaScript</span>
-                                        <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">React.js</span>
-                                        <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">React Native</span>
-                                        <span class="badge bg-opacity-10 bg-success text-success border border-success border-opacity-25">Node.js</span>
-                                        <span class="badge bg-opacity-10 bg-secondary text-light border border-secondary border-opacity-25">Express.js</span>
+                                        <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">PHP</span>
                                         <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25">MySQL</span>
-                                        <span class="badge bg-opacity-10 bg-light text-light border border-light border-opacity-25">Expo</span>
+                                        <span class="badge bg-opacity-10 bg-light text-light border border-light border-opacity-25">Laravel</span>
                                     </div>
                                 </div>
                                 
@@ -280,11 +277,11 @@
                                         </li>
                                         <li class="mb-3 d-flex gap-3">
                                             <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Built API-driven systems using Node.js (Express.js) and MySQL for efficient data management and integration.</span>
+                                            <span>Developed and maintained dynamic web applications using PHP, Laravel, Blade, and MySQL to support academic and administrative operations at World Academy.</span>
                                         </li>
                                         <li class="d-flex gap-3">
                                             <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Designed and implemented modern, dynamic frontend interfaces in React.js to consume APIs and deliver seamless user experiences.</span>
+                                            <span>Built and integrated RESTful APIs for a blog platform, enabling efficient content management and seamless frontend-backend communication.</span>
                                         </li>
                                     </ul>
                                 </div>
