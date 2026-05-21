@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K.M. AL-AMIN | PHP & Laravel Developer</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/assets/images/AL-AMIN.png') }}">
     <meta name="description" content="Portfolio of K.M. AL-AMIN, a professional Web Developer focused on PHP and Laravel development.">
     
     <!-- Bootstrap 5 CSS -->
