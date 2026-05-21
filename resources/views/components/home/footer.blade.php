@@ -12,7 +12,7 @@
                             <a href="{{ $myinfo?->github }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-github-logo"></i></a>
                         @endif
 
-                        @if ($myinf?->linkedin)                            
+                        @if ($myinfo?->linkedin)                            
                             <a href="{{ $myinfo?->linkedin }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-linkedin-logo"></i></a>
                         @endif
 
