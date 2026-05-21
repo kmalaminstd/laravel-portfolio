@@ -7,17 +7,17 @@
             <div class="container-fluid px-0">
                 <div class="position-relative" style="height: 60vh; min-height: 400px;">
                     <div class="position-absolute w-100 h-100 bg-dark opacity-75 z-1"></div>
-                    @foreach ($project->projectMedia as $pm)
-                        @if($pm->media->featured)
-                            <img src="{{ asset('/storage/' . $pm->media->src) }}" alt="Hero Banner" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+                    @foreach ($project?->projectMedia as $pm)
+                        @if($pm?->media?->featured)
+                            <img src="{{ asset('/storage/' . $pm?->media?->src) }}" alt="Hero Banner" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
                         @endif
                     @endforeach
                     <div class="container h-100 position-relative z-2 d-flex align-items-center">
                         <div class="w-100">
                             <a href="/projects" class=" hover-cyan mb-3 d-inline-flex align-items-center gs_reveal_right"><i class="ph ph-arrow-left me-2"></i> Back to Works</a>
-                            <h1 class="display-4 fw-bold text-white mb-3 gs_reveal">{{$project->title}}</h1>
+                            <h1 class="display-4 fw-bold text-white mb-3 gs_reveal">{{$project?->title}}</h1>
                             <div class="d-flex gap-3 flex-wrap gs_reveal_up">
-                                @foreach ($project->techStacks as $tech)                                    
+                                @foreach ($project?->techStacks as $tech)                                    
                                     <span class="badge bg-opacity-10 bg-warning text-warning border border-warning border-opacity-25 tech-font fs-6 py-2 px-3">{{ $tech->name }}</span>
                                 @endforeach
                             </div>
@@ -34,7 +34,7 @@
                     <div class="col-lg-8">
                         <div class="glass-card p-4 p-md-5 mb-5 neon-border gs_reveal_up">
                             <h3 class="fw-bold mb-4">Project Overview</h3>
-                            {!! $project->description !!}
+                            {!! $project?->description !!}
                         </div>
 
                         <!-- Screenshots Gallery -->
@@ -62,10 +62,10 @@
                         <div class="glass-card p-4 p-md-5 mb-5 gs_reveal_up">
                             <h3 class="fw-bold mb-4">Development Process</h3>
                             <ul class="list-unstyled">
-                                @foreach ($project->process as $process)                                    
+                                @foreach ($project?->process as $process)                                    
                                     <li class="mb-3 d-flex gap-3">
                                         <i class="ph-fill ph-check-circle text-accent-cyan mt-1 fs-5"></i>
-                                        <span><strong>{{ $process->name }}</strong> {{ $process->description }}</span>
+                                        <span><strong>{{ $process?->name }}</strong> {{ $process?->description }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -73,7 +73,7 @@
                             <h4 class="fw-bold mt-5 mb-3 text-white">Challenges Faced</h4>
                             <p class="">
                                 {{-- {{ dd($process->challenge) }} --}}
-                                {{ $project->challenge->description }}
+                                {{ $project?->challenge?->description }}
                             </p>
                         </div>
                         
@@ -87,24 +87,24 @@
                                 <ul class="list-unstyled mb-0">
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Client</span>
-                                        <span class="text-white fw-medium">{{ $project->client }}</span>
+                                        <span class="text-white fw-medium">{{ $project?->client }}</span>
                                     </li>
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Role</span>
-                                        <span class="text-white fw-medium">{{ $project->role }}</span>
+                                        <span class="text-white fw-medium">{{ $project?->role }}</span>
                                     </li>
                                     <li class="mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                         <span class=" d-block small">Timeline</span>
-                                        <span class="text-white fw-medium">{{ $project->timeline }}</span>
+                                        <span class="text-white fw-medium">{{ $project?->timeline }}</span>
                                     </li>
                                     <li>
                                         <span class=" d-block small mb-2">Links</span>
                                         <div class="d-flex gap-2 flex-column">
-                                            @if ($project->live_link)                                                
+                                            @if ($project?->live_link)                                                
                                                 <a href="{{ $project->live_link }}" class="btn-custom btn-primary-custom w-100 text-center"><i class="ph ph-link me-2"></i> Live Preview</a>
                                             @endif
 
-                                            @if ($project->github_link)                                                
+                                            @if ($project?->github_link)                                                
                                                 <a href="{{ $project->github_link }}" class="btn-custom btn-outline-custom w-100 text-center bg-dark bg-opacity-50"><i class="ph-fill ph-github-logo me-2"></i> Source Code</a>
                                             @endif
                                         </div>
@@ -115,7 +115,7 @@
                             <div class="glass-card p-4 gs_reveal_right" data-delay="0.2">
                                 <h5 class="fw-bold mb-4 text-white">Key Features</h5>
                                 <ul class=" ps-3 mb-0">
-                                    @foreach ($project->feature as $feat)                                        
+                                    @foreach ($project?->feature as $feat)                                        
                                         <li class="mb-2">{{ $feat->name }}</li>
                                     @endforeach
                                 </ul>
