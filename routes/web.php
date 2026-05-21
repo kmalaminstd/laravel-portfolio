@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     });
 
     Route::controller(MyInfoController::class)->group(function(){
-        Route::post('/my-info', 'create');
+        Route::post('/general', 'create');
     });
 
     Route::controller(ContactController::class)->group(function(){
