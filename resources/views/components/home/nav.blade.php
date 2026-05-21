@@ -23,7 +23,7 @@
                     </li>
                 </ul>
                 <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
-                    <a href="assets/resume.pdf" class="btn-custom btn-primary-custom btn-sm">Resume <i class="ph ph-download-simple ms-2"></i></a>
+                    <a href="{{ asset('/storage/'. $myinfo->resume) }}" download class="btn-custom btn-primary-custom btn-sm">Resume <i class="ph ph-download-simple ms-2"></i></a>
                 </div>
             </div>
         </div>

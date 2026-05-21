@@ -32,7 +32,7 @@
                                         </div>
                                         <div>
                                             <span class="d-block  small">Email Address</span>
-                                            <a href="mailto:hello@devalamin.com" class="text-white fw-medium text-decoration-none hover-cyan">hello@devalamin.com</a>
+                                            <a href="mailto:{{ $myinfo->email }}" class="text-white fw-medium text-decoration-none hover-cyan">{{ $myinfo->email }}</a>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 group">
@@ -41,7 +41,7 @@
                                         </div>
                                         <div>
                                             <span class="d-block  small">WhatsApp</span>
-                                            <a href="https://wa.me/1234567890" class="text-white fw-medium text-decoration-none hover-cyan">+880 1234 567 890</a>
+                                            <a href="https://wa.me/1234567890" class="text-white fw-medium text-decoration-none hover-cyan">{{ $myinfo->whatsapp }}</a>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 group">
@@ -59,12 +59,20 @@
                             <div>
                                 <div class="d-flex align-items-center gap-2 mb-4">
                                     <div class="spinner-grow text-success spinner-grow-sm" role="status"></div>
-                                    <span class="text-white fw-medium">Available for freelance work</span>
+                                    <span class="text-white fw-medium">Available 24 / 7</span>
                                 </div>
                                 <div class="d-flex gap-3">
-                                    <a href="#" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-github-logo"></i></a>
-                                    <a href="#" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-linkedin-logo"></i></a>
-                                    <a href="#" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-twitter-logo"></i></a>
+                                    @if ($myinfo->github)                                        
+                                        <a href="{{ $myinfo->github }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-github-logo"></i></a>
+                                    @endif
+
+                                    @if ($myinfo->linkedin)                                        
+                                        <a href="{{ $myinfo->linkedin }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-linkedin-logo"></i></a>
+                                    @endif
+
+                                    @if ($myinfo->twitter)                                        
+                                        <a href="{{ $myinfo->twitter }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-twitter-logo"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -73,26 +81,34 @@
                     <!-- Contact Form -->
                     <div class="col-lg-7 gs_reveal_right">
                         <div class="glass-card p-4 p-md-5 h-100">
-                            <form id="contactForm">
+                            <form action="/contact" method="POST">
+                                @csrf
+                                @if ($errors->any())
+                                    <ul class="text-danger">
+                                        @foreach ($errors as $err)
+                                            <li>{{ $err->message }}</li>    
+                                        @endforeach
+                                    </ul>
+                                @endif
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <label class="form-label  small">Your Name</label>
-                                        <input type="text" class="form-control form-control-custom" placeholder="John Doe" required>
+                                        <input type="text" name="name" class="form-control form-control-custom" placeholder="John Doe" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label  small">Your Email</label>
-                                        <input type="email" class="form-control form-control-custom" placeholder="john@example.com" required>
+                                        <input type="email" name="email" class="form-control form-control-custom" placeholder="john@example.com" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label  small">Subject</label>
-                                        <input type="text" class="form-control form-control-custom" placeholder="Project Inquiry" required>
+                                        <input name="subject" type="text" class="form-control form-control-custom" placeholder="Project Inquiry" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label  small">Message</label>
-                                        <textarea class="form-control form-control-custom" rows="5" placeholder="Tell me about your project..." required></textarea>
+                                        <textarea name="message" class="form-control form-control-custom" rows="5" placeholder="Tell me about your project..." required></textarea>
                                     </div>
                                     <div class="col-12 mt-4">
-                                        <button type="submit" class="btn-custom btn-primary-custom w-100 btn-lg" id="submitBtn">
+                                        <button type="submit" class="btn-custom btn-primary-custom w-100 btn-lg">
                                             Send Message <i class="ph ph-paper-plane-tilt ms-2"></i>
                                         </button>
                                     </div>

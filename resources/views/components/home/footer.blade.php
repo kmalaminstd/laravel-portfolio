@@ -8,10 +8,21 @@
                     </a>
                     <p class="pe-lg-5">A passionate PHP & Laravel Developer crafting robust backend logic and scalable web applications.</p>
                     <div class="d-flex gap-3 mt-4">
-                        <a href="#" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-github-logo"></i></a>
-                        <a href="#" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-linkedin-logo"></i></a>
-                        <a href="#" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-twitter-logo"></i></a>
-                        <a href="#" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-envelope"></i></a>
+                        @if ($myinfo->github)                            
+                            <a href="{{ $myinfo->github }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-github-logo"></i></a>
+                        @endif
+
+                        @if ($myinfo->linkedin)                            
+                            <a href="{{ $myinfo->linkedin }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        @endif
+
+                        @if ($myinfo->twitter)                            
+                            <a href="{{ $myinfo->twitter }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-twitter-logo"></i></a>
+                        @endif
+
+                        @if ($myinfo->email)                            
+                            <a href="{{ $myinfo->email }}" class="text-white fs-4 hover-cyan transition-smooth"><i class="ph-fill ph-envelope"></i></a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-2 col-6">
@@ -46,14 +57,14 @@
                             <i class="ph-fill ph-envelope-simple text-gradient fs-4 mt-1"></i>
                             <div>
                                 <span class="d-block text-white fw-medium">Email</span>
-                                <a href="mailto:hello@devalamin.com" class="text-white hover-cyan">hello@devalamin.com</a>
+                                <a href="mailto:{{ $myinfo->email }}" class="text-white hover-cyan">{{ $myinfo->email }}</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="border-top pt-3 mt-4 text-center d-flex flex-column flex-md-row justify-content-center align-items-center" style="border-color: rgba(255,255,255,0.05) !important;">
-                <p class="text-white text-center small mb-0">&copy; 2026 K.M. AL-AMIN. All rights reserved.</p>
+                <p class="text-white text-center small mb-0">&copy; {{ now()->year }} K.M. AL-AMIN. All rights reserved.</p>
             </div>
         </div>
     </footer>

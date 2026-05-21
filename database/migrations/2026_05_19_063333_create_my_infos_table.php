@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string("email")->nullable();
             $table->string("twitter")->nullable();
             $table->string("whatsapp")->nullable();
+            $table->foreignIdFor(Media::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

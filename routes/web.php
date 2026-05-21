@@ -8,6 +8,8 @@ use App\Http\Controllers\TechStackController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MyInfoController;
 use App\Http\Controllers\ProcessController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +18,10 @@ Route::controller(HomeController::class)->group(function(){
     // Route::get('/services', 'services');
     Route::get('/projects', 'projects');
     Route::get('/contact', 'contact');
+});
+
+Route::controller(ContactController::class)->group(function(){
+    Route::post('/contact', 'create');
 });
 
 Route::controller(SessionController::class)->group(function(){
@@ -76,6 +82,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::controller(ChallengeController::class)->group(function(){
         Route::post("/challenge/{project}", 'create');
         Route::delete("/challenge/{challenge}/delete", 'destroy');
+    });
+
+    Route::controller(MyInfoController::class)->group(function(){
+        Route::post('/my-info', 'create');
+    });
+
+    Route::controller(ContactController::class)->group(function(){
+        Route::delete('/contact/{contact}/delete', 'destroy');
     });
 
 });

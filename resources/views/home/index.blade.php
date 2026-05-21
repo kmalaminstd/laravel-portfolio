@@ -29,15 +29,21 @@
                             </div>
                             
                             <div class="mt-5 pt-3 d-flex align-items-center gap-4 hero-socials">
-                                <a href="#" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-github-logo"></i></a>
-                                <a href="#" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-linkedin-logo"></i></a>
-                                <a href="#" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-twitter-logo"></i></a>
+                                @if ($myinfo->github)                                    
+                                    <a href="{{ $myinfo->github }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-github-logo"></i></a>
+                                @endif
+                                @if ($myinfo->linkedin)                                    
+                                    <a href="{{ $myinfo->linkedin }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-linkedin-logo"></i></a>
+                                @endif
+                                @if ($myinfo->twitter)                                    
+                                    <a href="{{ $myinfo->twitter }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-twitter-logo"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-5 mt-5 mt-lg-0 position-relative z-1">
                         <div class="hero-image-wrapper glass-card p-2 neon-border rounded-circle mx-auto" style="width: 350px; height: 350px;">
-                            <img src="/assets/images/AL-AMIN.png" alt="Developer" class="img-fluid rounded-circle w-100 h-100 object-fit-cover" style="filter: grayscale(20%) contrast(120%);">
+                            <img src="{{ asset('/storage/' . $myinfo->media->src) }}" alt="Developer" class="img-fluid rounded-circle w-100 h-100 object-fit-cover">
                         </div>
                         
                         <!-- Floating Tech Badges -->
@@ -99,7 +105,7 @@
                             </div>
                         </div>
 
-                        <a href="assets/resume.pdf" class="btn-custom btn-primary-custom">Download CV <i class="ph ph-download-simple ms-2"></i></a>
+                        <a href="{{ asset('/storage/' . $myinfo->resume) }}" download class="btn-custom btn-primary-custom">Download CV <i class="ph ph-download-simple ms-2"></i></a>
                     </div>
                 </div>
             </div>

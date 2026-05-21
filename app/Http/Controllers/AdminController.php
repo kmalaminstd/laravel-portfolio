@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\MyInfo;
 use App\Models\Project;
 use App\Models\TechStack;
 use Illuminate\Http\Request;
@@ -42,7 +43,9 @@ class AdminController extends Controller
     }
 
     public function general(){
-        return view('admin.general');
+        $myinfos = MyInfo::first();
+        // dd($myinfos);
+        return view('admin.general', compact(['myinfos']));
     }
 
 }

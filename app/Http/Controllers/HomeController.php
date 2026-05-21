@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\MyInfo;
 use App\Models\Project;
 use App\Models\TechStack;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ class HomeController extends Controller
     public function home(){
         $projects = Project::latest()->where('status', true)->take(2)->get();
         $techs = TechStack::all();
+        $myinfo = MyInfo::first();
         // dd($techs);
-        return view('home.index', compact(['projects', 'techs']));
+        return view('home.index', compact(['projects', 'techs', 'myinfo']));
     }
 
     public function contact(){
