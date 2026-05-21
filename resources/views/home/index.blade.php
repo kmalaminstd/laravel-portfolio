@@ -25,7 +25,7 @@
                             </p>
                             <div class="d-flex gap-3 flex-wrap hero-btns">
                                 <a href="#projects" class="btn-custom btn-primary-custom">View My Work <i class="ph ph-arrow-right ms-2"></i></a>
-                                <a href="contact.html" class="btn-custom btn-outline-custom">Contact Me</a>
+                                <a href="/contact" class="btn-custom btn-outline-custom">Contact Me</a>
                             </div>
                             
                             <div class="mt-5 pt-3 d-flex align-items-center gap-4 hero-socials">
