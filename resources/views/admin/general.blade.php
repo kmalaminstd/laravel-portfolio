@@ -29,7 +29,7 @@
                         <div class="mb-4">
                             <label class="form-label">CV / Resume Upload (PDF)</label>
                             <input name="resume" type="file" class="form-control form-control-custom" accept=".pdf">
-                            <small class="text-muted mt-1 d-block">Current file: <a href="/storage/{{ $myinfos->resume }}" class="text-info">{{ $myinfos ? $myinfos->resume : '' }}</a></small>
+                            <small class="text-muted mt-1 d-block">Current file: <a href="/storage/{{ $myinfos?->resume }}" class="text-info">{{ $myinfos ? $myinfos->resume : '' }}</a></small>
                         </div>
 
                         <button type="submit" class="btn btn-primary px-5 btn-lg shadow-glow" style="background-color: var(--accent-indigo); border: none;">Save</button>
