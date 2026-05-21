@@ -9,6 +9,17 @@
             <form method="POST" action="/admin/project/{{ $project->id }}/update" enctype="multipart/form-data">
                 @csrf
                 @method("PATCH")
+
+                @if ($errors->any())
+                    <div style="color:red; margin-bottom: 1rem;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="row g-4">
                     <div class="col-md-6">
                         <label class="form-label">Project Title</label>
@@ -38,17 +49,17 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Client</label>
-                        <input type="text" name="client" class="form-control form-control-custom" placeholder="A brief description...">
+                        <input type="text" value={{ $project?->client }} name="client" class="form-control form-control-custom" placeholder="A brief description...">
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Role</label>
-                        <input type="text" name="role" class="form-control form-control-custom" placeholder="A Bakend Developer">
+                        <input type="text" value={{ $project?->role }} name="role" class="form-control form-control-custom" placeholder="A Bakend Developer">
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Timeline</label>
-                        <input type="text" name="client" class="form-control form-control-custom" placeholder="A 4 Months">
+                        <input type="text" value={{ $project?->timeline }} name="timeline" class="form-control form-control-custom" placeholder="A 4 Months">
                     </div>
 
                     <div class="col-md-6">
