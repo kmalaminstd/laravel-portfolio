@@ -111,72 +111,7 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="section-padding bg-darker">
-            <div class="container">
-                <div class="text-center mb-5 gs_reveal">
-                    <h2 class="section-title">My Services</h2>
-                    <p class="max-w-2xl mx-auto mt-3">Delivering high-quality web solutions tailored to your business needs.</p>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-browser fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Custom Web App</h4>
-                            <p class="">Building bespoke, scalable, and secure web applications from scratch using modern technologies.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-brackets-curly fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Laravel Development</h4>
-                            <p class="">Expertise in developing robust backend systems, complex logic, and MVC architecture using Laravel.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-plugs fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">REST API Development</h4>
-                            <p class="">Designing and building secure, fast, and documented APIs for mobile apps or third-party integrations.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-layout fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Admin Dashboard</h4>
-                            <p class="">Creating intuitive and powerful admin panels for managing your application's data effortlessly.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-database fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Database Design</h4>
-                            <p class="">Architecting efficient and normalized database structures to ensure data integrity and performance.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-bug fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Bug Fixing & Maint.</h4>
-                            <p class="">Identifying and resolving complex bugs, optimizing code, and providing ongoing support.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Featured Projects Section -->
         <section id="projects" class="section-padding">
@@ -204,6 +139,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- Stats Section -->
         <!-- <section class="py-5 position-relative border-top border-bottom" style="border-color: rgba(255,255,255,0.05) !important; background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(30,41,59,0.9));">
@@ -286,6 +222,74 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding bg-darker">
+            <div class="container">
+                <div class="text-center mb-5 gs_reveal">
+                    <h2 class="section-title">Skills</h2>
+                    {{-- <p class="max-w-2xl mx-auto mt-3">Delivering high-quality web solutions tailored to your business needs.</p> --}}
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-browser fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">Custom Web App</h4>
+                            <p class="">Building bespoke, scalable, and secure web applications from scratch using modern technologies.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-brackets-curly fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">Laravel Development</h4>
+                            <p class="">Expertise in developing robust backend systems, complex logic, and MVC architecture using Laravel.</p>
+                        </div>
+                    </div>
+                    {{-- <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-plugs fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">REST API Development</h4>
+                            <p class="">Designing and building secure, fast, and documented APIs for mobile apps or third-party integrations.</p>
+                        </div>
+                    </div> --}}
+                    <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-layout fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">Admin Dashboard</h4>
+                            <p class="">Creating intuitive and powerful admin panels for managing your application's data effortlessly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-database fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">Database Design</h4>
+                            <p class="">Architecting efficient and normalized database structures to ensure data integrity and performance.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 gs_reveal_up">
+                        <div class="glass-card p-5 h-100 neon-border">
+                            <div class="mb-4 text-gradient">
+                                <i class="ph-fill ph-bug fs-1"></i>
+                            </div>
+                            <h4 class="mb-3 text-white">Bug Fixing & Maint.</h4>
+                            <p class="">Identifying and resolving complex bugs, optimizing code, and providing ongoing support.</p>
                         </div>
                     </div>
                 </div>
