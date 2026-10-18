@@ -26,6 +26,11 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KHM234XW');</script>
     <!-- End Google Tag Manager -->
+
+    {{-- cloudflare turnstile --}}
+    <link rel="preconnect" href="https://challenges.cloudflare.com" />
+    <script	src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
 <body>
 

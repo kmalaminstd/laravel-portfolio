@@ -63,15 +63,15 @@
                                 </div>
                                 <div class="d-flex gap-3">
                                     @if ($myinfo->github)                                        
-                                        <a href="{{ $myinfo->github }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-github-logo"></i></a>
+                                        <a href="{{ $myinfo->github }}" class="bg-card p-3 d-block rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-github-logo"></i></a>
                                     @endif
 
                                     @if ($myinfo->linkedin)                                        
-                                        <a href="{{ $myinfo->linkedin }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-linkedin-logo"></i></a>
+                                        <a href="{{ $myinfo->linkedin }}" class="bg-card p-3 d-block rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-linkedin-logo"></i></a>
                                     @endif
 
                                     @if ($myinfo->twitter)                                        
-                                        <a href="{{ $myinfo->twitter }}" class="bg-card p-3 rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-twitter-logo"></i></a>
+                                        <a href="{{ $myinfo->twitter }}" class="bg-card p-3 d-block rounded-circle  fs-4 hover-cyan transition-smooth border border-secondary border-opacity-25"><i class="ph-fill ph-twitter-logo"></i></a>
                                     @endif
                                 </div>
                             </div>
@@ -106,6 +106,9 @@
                                     <div class="col-12">
                                         <label class="form-label  small">Message</label>
                                         <textarea name="message" class="form-control form-control-custom" rows="5" placeholder="Tell me about your project..." required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAFWtUt4NrIrJzKuP"></div>
                                     </div>
                                     <div class="col-12 mt-4">
                                         <button type="submit" class="btn-custom btn-primary-custom w-100 btn-lg">
