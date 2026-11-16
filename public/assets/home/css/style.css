@@ -359,6 +359,10 @@ p:last-child { margin-bottom: 0; }
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
+.nav-mobile{
+    display: none;
+}
+
 @media (max-width: 900px) {
     .nav-links,
     .nav-cta { display: none; }
