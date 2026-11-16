@@ -6,27 +6,27 @@
 <section class="hero" id="home">
     <div class="container-site">
         @if($myinfo?->media?->src)
-        <div class="hero-visual gs_reveal_scale">
+        <div class="hero-visual">
             <div class="hero-visual-frame"></div>
             <img src="{{ asset('/storage/' . $myinfo->media->src) }}" alt="K.M. AL-AMIN">
         </div>
         @endif
 
-        <div class="hero-meta gs_reveal">
+        <div class="hero-meta">
             <span><strong>Based in</strong> {{ $myinfo?->location ?? 'Dhaka, Bangladesh' }}</span>
             <span class="avail-pill"><span class="dot"></span> Available for work</span>
             <span><strong>Role</strong> PHP & Laravel Developer</span>
         </div>
 
-        <h1 class="hero-title gs_reveal">
+        <h1 class="hero-title">
             K.M. <em>AL-AMIN</em>
         </h1>
 
-        <p class="hero-lead gs_reveal_up">
+        <p class="hero-lead">
             I build scalable, secure web applications — transforming complex backend logic into seamless digital experiences.
         </p>
 
-        <div class="hero-actions gs_reveal_up">
+        <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">View selected work <i class="ph ph-arrow-down"></i></a>
             <a href="/contact" class="btn btn-outline">Start a conversation</a>
         </div>
@@ -187,7 +187,7 @@
 
         <div class="project-showcase">
             @foreach ($projects as $index => $project)
-            <article class="project-row {{ $index % 2 === 1 ? 'reverse' : '' }} gs_reveal_up">
+            <article class="project-row {{ $index % 2 === 1 ? 'reverse' : '' }}">
                 <div class="project-media">
                     <a href="/project/{{ $project->id }}" class="project-media-link" aria-label="View {{ $project->title }}"></a>
                     @foreach ($project->projectMedia as $pm)
@@ -235,32 +235,32 @@
         </div>
 
         <div class="services-list">
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">01</div>
                 <h3>Custom Web Applications</h3>
                 <p>Bespoke, scalable applications from the ground up — modeled around your workflows and data.</p>
             </div>
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">02</div>
                 <h3>Laravel Development</h3>
                 <p>Robust backend systems, complex domain logic, and clean MVC architecture with Laravel.</p>
             </div>
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">03</div>
                 <h3>Admin Dashboards</h3>
                 <p>Intuitive panels for managing content, users, and operations without friction.</p>
             </div>
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">04</div>
                 <h3>Database Design</h3>
                 <p>Normalized, efficient schemas that protect integrity and perform under load.</p>
             </div>
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">05</div>
                 <h3>API Design & Integration</h3>
                 <p>Secure, documented REST APIs for mobile apps, third parties, and internal services.</p>
             </div>
-            <div class="service-item gs_reveal_up">
+            <div class="service-item">
                 <div class="service-num">06</div>
                 <h3>Maintenance & Optimization</h3>
                 <p>Bug fixes, performance work, and ongoing support so systems stay healthy.</p>

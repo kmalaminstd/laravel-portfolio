@@ -6,23 +6,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    /* Warm neutral palette */
-    --bg: #F6F3EE;
-    --bg-warm: #EFEBE3;
-    --bg-dark: #1C1B19;
-    --bg-card: #FFFFFF;
-    --surface: #FAF8F4;
+    /* Dark editorial palette */
+    --bg: #0E0E0C;
+    --bg-warm: #161512;
+    --bg-dark: #070706;
+    --bg-card: #1A1916;
+    --surface: #141310;
 
-    --ink: #1C1B19;
-    --ink-soft: #3D3A36;
-    --muted: #7A756C;
-    --muted-light: #A39E94;
+    --ink: #F2EFE8;
+    --ink-soft: #C8C2B6;
+    --muted: #8A8478;
+    --muted-light: #5C574E;
 
-    /* Accent — terracotta / burnt clay */
-    --accent: #C45C26;
-    --accent-hover: #A84A1C;
-    --accent-soft: rgba(196, 92, 38, 0.12);
-    --accent-line: rgba(196, 92, 38, 0.35);
+    /* Accent — warm terracotta on dark */
+    --accent: #E06B35;
+    --accent-hover: #F07A42;
+    --accent-soft: rgba(224, 107, 53, 0.14);
+    --accent-line: rgba(224, 107, 53, 0.4);
 
     /* Typography */
     --font-display: 'Syne', sans-serif;
@@ -42,8 +42,8 @@
     --radius-sm: 4px;
     --radius: 8px;
     --radius-lg: 16px;
-    --border: 1px solid rgba(28, 27, 25, 0.1);
-    --border-strong: 1px solid rgba(28, 27, 25, 0.18);
+    --border: 1px solid rgba(242, 239, 232, 0.08);
+    --border-strong: 1px solid rgba(242, 239, 232, 0.14);
 
     /* Motion */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -81,7 +81,7 @@ body::before {
     inset: 0;
     pointer-events: none;
     z-index: 9998;
-    opacity: 0.035;
+    opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -204,7 +204,7 @@ p:last-child { margin-bottom: 0; }
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.25s var(--ease), height 0.25s var(--ease), background 0.25s;
-    mix-blend-mode: multiply;
+    mix-blend-mode: difference;
     opacity: 0;
 }
 
@@ -230,14 +230,24 @@ p:last-child { margin-bottom: 0; }
     height: var(--nav-h);
     display: flex;
     align-items: center;
-    transition: background 0.35s var(--ease), box-shadow 0.35s, backdrop-filter 0.35s;
+    transform: translateY(0);
+    will-change: transform;
+    transition: background 0.35s var(--ease), box-shadow 0.35s, backdrop-filter 0.35s, transform 0.4s var(--ease);
 }
 
 .site-nav.scrolled {
-    background: rgba(246, 243, 238, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 1px 0 rgba(28, 27, 25, 0.06);
+    background: rgba(14, 14, 12, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 rgba(242, 239, 232, 0.06);
+}
+
+.site-nav.nav-hidden {
+    transform: translateY(-110%);
+}
+
+.site-nav.menu-open {
+    transform: translateY(0) !important;
 }
 
 .site-nav .nav-inner {
@@ -535,7 +545,7 @@ p:last-child { margin-bottom: 0; }
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+    background: linear-gradient(180deg, transparent 30%, var(--bg) 100%);
     opacity: 0.55;
 }
 
@@ -1525,6 +1535,26 @@ textarea.form-control-custom {
     visibility: hidden;
 }
 
+
+/* Hero starts hidden for entrance timeline; reduced-motion override below */
+.hero-meta,
+.hero-title,
+.hero-lead,
+.hero-actions,
+.hero-visual {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-meta,
+    .hero-title,
+    .hero-lead,
+    .hero-actions,
+    .hero-visual {
+        opacity: 1 !important;
+    }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -1558,3 +1588,133 @@ textarea.form-control-custom {
 
 /* Turnstile spacing */
 .cf-turnstile { margin: 0.5rem 0 0.25rem; }
+
+
+/* ---------- Dark-theme refinements ---------- */
+.tech-chip {
+    background: rgba(242, 239, 232, 0.04);
+}
+
+.skill-tag {
+    background: transparent;
+}
+
+.contact-form,
+.detail-panel {
+    background: var(--surface);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+
+/* Section alternating surfaces already use --surface */
+
+/* Parallax / advanced motion hooks */
+.parallax-slow { will-change: transform; }
+.parallax-img { will-change: transform; overflow: hidden; }
+.parallax-img img { will-change: transform; }
+
+.line-mask {
+    overflow: hidden;
+    display: block;
+}
+
+.line-mask > span {
+    display: block;
+}
+
+/* Horizontal progress indicator under nav */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 1001;
+    transform-origin: left center;
+    pointer-events: none;
+}
+
+/* Skill tag stagger container */
+.skill-tags .skill-tag {
+    opacity: 1;
+}
+
+/* Project media clip reveal */
+.project-media {
+    clip-path: inset(0 0 0 0);
+}
+
+.project-media.is-revealing {
+    clip-path: inset(0 0 0 0);
+}
+
+/* Nav mobile dark */
+.nav-mobile {
+    background: var(--bg);
+}
+
+/* Ensure btn primary inverted correctly on dark */
+.btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+.btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.btn-outline {
+    color: var(--ink);
+    border-color: rgba(242, 239, 232, 0.35);
+}
+.btn-outline:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+
+.nav-cta {
+    border-color: rgba(242, 239, 232, 0.35);
+}
+.nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+/* Availability pulse stays green */
+.avail-pill .dot { background: #3DBF6A; }
+
+/* Hero title slight glow optional */
+.hero-title em {
+    text-shadow: 0 0 80px rgba(224, 107, 53, 0.25);
+}
+
+/* Form controls on dark */
+.form-control-custom {
+    border-bottom-color: rgba(242, 239, 232, 0.15);
+    color: var(--ink);
+}
+.form-control-custom:focus {
+    border-bottom-color: var(--accent);
+}
+
+/* Loader on dark */
+#loader { background: var(--bg); }
+
+/* Fix service borders on dark already via vars */
+
+/* Page sections that used inline surface — keep working */
+
+/* Selection */
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
