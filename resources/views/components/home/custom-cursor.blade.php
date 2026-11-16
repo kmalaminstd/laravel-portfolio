@@ -1,2 +1,1 @@
-<!-- Custom Cursor -->
-    <div class="custom-cursor" id="custom-cursor"></div>
+<div class="custom-cursor" id="custom-cursor"></div>

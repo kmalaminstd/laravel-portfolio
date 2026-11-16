@@ -1,344 +1,286 @@
 @extends('layouts/home-layout')
 
 @section('content')
-        
-        <!-- Hero Section -->
-        <section id="home" class="min-vh-100 d-flex align-items-center position-relative overflow-hidden">
-            <!-- Background Glows -->
-            <div class="position-absolute top-0 start-0 translate-middle w-50 h-50 bg-gradient-custom rounded-circle opacity-25" style="filter: blur(100px); z-index: -1;"></div>
-            <div class="position-absolute bottom-0 end-0 translate-middle-x w-50 h-50 bg-gradient-custom rounded-circle opacity-25" style="filter: blur(100px); z-index: -1;"></div>
 
-            <div class="container pt-5 mt-5">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 z-1">
-                        <div class="hero-content">
-                            <span class="d-inline-block px-3 py-1 rounded-pill mb-3 tech-font fs-6" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.2);">
-                                Hey , 
-                            </span>
-                            <h1 class="display-3 fw-bold mb-3 hero-title">
-                                I'm <span class="text-gradient">K.M. AL-AMIN</span><br>
-                                <span class="hero-subtitle">PHP & Laravel Developer</span>
-                            </h1>
-                            <p class="lead mb-4 hero-desc pe-lg-5">
-                                I build scalable, secure, and performant web applications. 
-                                Transforming complex backend logic into seamless digital experiences.
-                            </p>
-                            <div class="d-flex gap-3 flex-wrap hero-btns">
-                                <a href="#projects" class="btn-custom btn-primary-custom">View My Work <i class="ph ph-arrow-right ms-2"></i></a>
-                                <a href="/contact" class="btn-custom btn-outline-custom">Contact Me</a>
-                            </div>
-                            
-                            <div class="mt-5 pt-3 d-flex align-items-center gap-4 hero-socials">
-                                @if ($myinfo?->github)                                    
-                                    <a href="{{ $myinfo?->github }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-github-logo"></i></a>
-                                @endif
-                                @if ($myinfo?->linkedin)                                    
-                                    <a href="{{ $myinfo?->linkedin }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-linkedin-logo"></i></a>
-                                @endif
-                                @if ($myinfo?->twitter)                                    
-                                    <a href="{{ $myinfo?->twitter }}" class="text-white fs-4 hover-cyan"><i class="ph-fill ph-twitter-logo"></i></a>
-                                @endif
-                            </div>
-                        </div>
+{{-- ============ HERO ============ --}}
+<section class="hero" id="home">
+    <div class="container-site">
+        @if($myinfo?->media?->src)
+        <div class="hero-visual gs_reveal_scale">
+            <div class="hero-visual-frame"></div>
+            <img src="{{ asset('/storage/' . $myinfo->media->src) }}" alt="K.M. AL-AMIN">
+        </div>
+        @endif
+
+        <div class="hero-meta gs_reveal">
+            <span><strong>Based in</strong> {{ $myinfo?->location ?? 'Dhaka, Bangladesh' }}</span>
+            <span class="avail-pill"><span class="dot"></span> Available for work</span>
+            <span><strong>Role</strong> PHP & Laravel Developer</span>
+        </div>
+
+        <h1 class="hero-title gs_reveal">
+            K.M. <em>AL-AMIN</em>
+        </h1>
+
+        <p class="hero-lead gs_reveal_up">
+            I build scalable, secure web applications — transforming complex backend logic into seamless digital experiences.
+        </p>
+
+        <div class="hero-actions gs_reveal_up">
+            <a href="#projects" class="btn btn-primary">View selected work <i class="ph ph-arrow-down"></i></a>
+            <a href="/contact" class="btn btn-outline">Start a conversation</a>
+        </div>
+    </div>
+</section>
+
+{{-- ============ ABOUT ============ --}}
+<section class="section" id="about">
+    <div class="container-site">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow gs_reveal">About</p>
+                <h2 class="section-title gs_reveal">How I <em>think</em> & build</h2>
+            </div>
+            <p class="section-desc gs_reveal_up">Practical systems. Clean architecture. Long-term maintainability.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-statement gs_reveal_left">
+                I approach every project as a systems problem first — then as a product people will actually use.
+            </div>
+            <div class="about-body gs_reveal_right">
+                <p>
+                    Hello — I'm K.M. AL-AMIN, a PHP and Laravel developer focused on custom web applications, APIs, and scalable backends. I care about writing code that is clear, efficient, and maintainable.
+                </p>
+                <p>
+                    My work sits at the intersection of solid engineering and thoughtful product decisions: modeling data correctly, designing APIs that other developers enjoy using, and shipping features that hold up under real traffic.
+                </p>
+                <div class="about-meta">
+                    <div class="about-meta-item">
+                        <div class="label">Primary stack</div>
+                        <div class="value">PHP · Laravel · MySQL</div>
                     </div>
-                    <div class="col-lg-5 mt-5 mt-lg-0 position-relative z-1">
-                        <div class="hero-image-wrapper glass-card p-2 neon-border rounded-circle mx-auto" style="width: 350px; height: 350px;">
-                            <img src="{{ asset('/storage/' . $myinfo?->media?->src) }}" alt="Developer" class="img-fluid rounded-circle w-100 h-100 object-fit-cover">
-                        </div>
-                        
-                        <!-- Floating Tech Badges -->
-                        <div class="position-absolute top-0 start-0 translate-middle p-3 glass-card rounded-3 floating-badge" style="animation: float 3s ease-in-out infinite;">
-                            <i class="ph-fill ph-file-code fs-1 text-gradient"></i>
-                        </div>
-                        <div class="position-absolute bottom-0 end-0 translate-middle p-3 glass-card rounded-3 floating-badge" style="animation: float 4s ease-in-out infinite reverse;">
-                            <i class="ph-fill ph-database fs-1 text-gradient"></i>
-                        </div>
+                    <div class="about-meta-item">
+                        <div class="label">Supporting</div>
+                        <div class="value">JavaScript · Blade · APIs</div>
+                    </div>
+                    <div class="about-meta-item">
+                        <div class="label">Secondary</div>
+                        <div class="value">React · Node · Express</div>
+                    </div>
+                    <div class="about-meta-item">
+                        <div class="label">Focus</div>
+                        <div class="value">Backend systems & web apps</div>
                     </div>
                 </div>
+                @if($myinfo?->resume)
+                <div style="margin-top: 2rem;">
+                    <a href="{{ asset('/storage/' . $myinfo->resume) }}" download class="btn btn-primary">Download CV <i class="ph ph-download-simple"></i></a>
+                </div>
+                @endif
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Tech Stack Section -->
-        <section id="tech-stack" class="section-padding bg-darker overflow-hidden">
-            <div class="container text-center">
-                <h2 class="section-title mb-5 gs_reveal">My Tech Arsenal</h2>
-                <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 mt-4 justify-content-center tech-cards-container">
-                    <!-- Cards -->
-                    @foreach ($techs as $tech)                        
-                        <div class="col gs_reveal_scale">
-                            <div class="glass-card p-4 text-center tech-card h-100 d-flex flex-column align-items-center justify-content-center">
-                                <p class="fs-1 mb-2">
-                                    {!! $tech->icon !!}
-                                </p>
-                                <h6 class="mb-0 tech-font fw-bold">{{ $tech->name }}</h6>
-                            </div>
-                        </div>
+{{-- ============ JOURNEY ============ --}}
+<section class="section" style="background: var(--surface);">
+    <div class="container-site">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow gs_reveal">Experience</p>
+                <h2 class="section-title gs_reveal">Current <em>role</em></h2>
+            </div>
+        </div>
+
+        <div class="journey-block gs_reveal_up">
+            <div class="journey-side">
+                <div class="role">Web Designer</div>
+                <div class="company">World Academy for Research & Development</div>
+                <div class="period"><i class="ph ph-calendar-blank"></i> Apr 2025 — Present</div>
+                <div class="journey-tech">
+                    <span class="tech-chip">HTML</span>
+                    <span class="tech-chip">CSS</span>
+                    <span class="tech-chip">Bootstrap</span>
+                    <span class="tech-chip">JavaScript</span>
+                    <span class="tech-chip">PHP</span>
+                    <span class="tech-chip">MySQL</span>
+                    <span class="tech-chip">Laravel</span>
+                </div>
+            </div>
+            <div>
+                <p class="eyebrow" style="margin-bottom: 1rem;">Responsibilities & outcomes</p>
+                <ul class="journey-list">
+                    <li>Redesigned and developed responsive websites using HTML, CSS, Bootstrap, and JavaScript for improved user experience.</li>
+                    <li>Developed a cross-platform Android application with React Native (Expo) to support student engagement and internal workflows.</li>
+                    <li>Developed and maintained dynamic web applications using PHP, Laravel, Blade, and MySQL to support academic and administrative operations.</li>
+                    <li>Built and integrated RESTful APIs for a blog platform, enabling efficient content management and seamless frontend–backend communication.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ============ SKILLS ============ --}}
+<section class="section" id="tech-stack">
+    <div class="container-site">
+        <div class="skills-layout">
+            <div class="skills-intro">
+                <p class="eyebrow gs_reveal">Capabilities</p>
+                <h2 class="section-title gs_reveal">Tools I <em>reach for</em></h2>
+                <p class="gs_reveal_up">Primary focus on PHP and Laravel. JavaScript supports the frontend layer. React, Node, and Express when the problem calls for them.</p>
+            </div>
+            <div class="skill-groups">
+                <div class="gs_reveal_up">
+                    <div class="skill-group-label">Core — PHP & Backend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag primary">PHP</span>
+                        <span class="skill-tag primary">Laravel</span>
+                        <span class="skill-tag primary">MySQL</span>
+                        <span class="skill-tag">Blade</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Eloquent</span>
+                    </div>
+                </div>
+                <div class="gs_reveal_up">
+                    <div class="skill-group-label">Supporting — JavaScript & Frontend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML / CSS</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Tailwind</span>
+                    </div>
+                </div>
+                <div class="gs_reveal_up">
+                    <div class="skill-group-label">Secondary</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                    </div>
+                </div>
+                @if(isset($techs) && $techs->count())
+                <div class="gs_reveal_up">
+                    <div class="skill-group-label">From the stack</div>
+                    <div class="skill-tags">
+                        @foreach($techs as $tech)
+                            <span class="skill-tag">{{ $tech->name }}</span>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ============ FEATURED PROJECTS ============ --}}
+<section class="section" id="projects" style="background: var(--surface);">
+    <div class="container-site">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow gs_reveal">Selected work</p>
+                <h2 class="section-title gs_reveal">Featured <em>projects</em></h2>
+            </div>
+            <a href="/projects" class="btn btn-outline btn-sm gs_reveal">All projects <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <div class="project-showcase">
+            @foreach ($projects as $index => $project)
+            <article class="project-row {{ $index % 2 === 1 ? 'reverse' : '' }} gs_reveal_up">
+                <div class="project-media">
+                    <a href="/project/{{ $project->id }}" class="project-media-link" aria-label="View {{ $project->title }}"></a>
+                    @foreach ($project->projectMedia as $pm)
+                        @if ($pm->media->featured)
+                            <img src="{{ asset('/storage/' . $pm->media->src) }}" alt="{{ $project->title }}" loading="lazy">
+                        @endif
                     @endforeach
                 </div>
+                <div class="project-info">
+                    <div class="project-index">0{{ $index + 1 }}</div>
+                    <h3 class="project-title">
+                        <a href="/project/{{ $project->id }}">{{ $project->title }}</a>
+                    </h3>
+                    <p class="project-summary">{{ $project->short_summary }}</p>
+                    <div class="project-techs">
+                        @foreach ($project->techStacks as $stack)
+                            <span class="tech-chip">{{ $stack->name }}</span>
+                        @endforeach
+                    </div>
+                    <div class="project-links">
+                        <a href="/project/{{ $project->id }}" class="btn btn-primary btn-sm">Case study</a>
+                        @if ($project->live_link)
+                            <a href="{{ $project->live_link }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Live site <i class="ph ph-arrow-up-right"></i></a>
+                        @endif
+                    </div>
+                </div>
+            </article>
+            @endforeach
+        </div>
+
+        <div style="margin-top: 3.5rem; text-align: center;" class="gs_reveal">
+            <a href="/projects" class="btn btn-outline">Browse full archive <i class="ph ph-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+{{-- ============ SERVICES / WHAT I DO ============ --}}
+<section class="section" id="services">
+    <div class="container-site">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow gs_reveal">Services</p>
+                <h2 class="section-title gs_reveal">What I can <em>build</em> for you</h2>
             </div>
-        </section>
+        </div>
 
-        <!-- About Me Section -->
-        <section id="about" class="section-padding position-relative">
-            <div class="position-absolute top-50 start-0 translate-middle-y w-50 h-50 bg-gradient-custom rounded-circle opacity-75" style="filter: blur(100px); z-index: -1;"></div>
-            <div class="container">
-                <div class="row align-items-center">
-                    
-                    <div class="col-12 offset-lg-1 gs_reveal_right">
-                        <h2 class="section-title mb-4">About Me</h2>
-                        <h4 class="fw-light mb-4">Passionate about backend logic and crafting robust digital solutions.</h4>
-                        <p class="mb-4">
-                            Hello! I'm K.M. AL-AMIN, a dedicated PHP and Laravel Developer with a strong foundation in full-stack web development. I specialize in building custom web applications, APIs, and scalable architectures that solve real-world problems.
-                        </p>
-                        <p class="mb-4">
-                            My journey began with a curiosity for how websites work, which quickly evolved into a deep passion for writing clean, efficient, and maintainable code. I thrive on tackling complex backend challenges while ensuring the frontend remains intuitive and visually engaging.
-                        </p>
-                        
-                        <div class="d-flex flex-wrap gap-4 mb-5">
-                            <div>
-                                <h5 class="text-white mb-1"><i class="ph-fill ph-check-circle text-accent-cyan me-2"></i>Clean Code</h5>
-                                <p class="text-muted small">Maintainable architecture</p>
-                            </div>
-                            <div>
-                                <h5 class="text-white mb-1"><i class="ph-fill ph-check-circle text-accent-indigo me-2"></i>Performance</h5>
-                                <p class="text-muted small">Optimized solutions</p>
-                            </div>
-                        </div>
-
-                        <a href="{{ asset('/storage/' . $myinfo?->resume) }}" download class="btn-custom btn-primary-custom">Download CV <i class="ph ph-download-simple ms-2"></i></a>
-                    </div>
-                </div>
+        <div class="services-list">
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">01</div>
+                <h3>Custom Web Applications</h3>
+                <p>Bespoke, scalable applications from the ground up — modeled around your workflows and data.</p>
             </div>
-        </section>
-
-        
-
-        <!-- Featured Projects Section -->
-        <section id="projects" class="section-padding">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-end mb-5 gs_reveal">
-                    <div>
-                        <h2 class="section-title mb-0">Featured Projects</h2>
-                        <p class="mt-3 mb-0">Some of my recent and impactful works.</p>
-                    </div>
-                    <a href="/projects" class="btn-custom btn-outline-custom d-none d-md-inline-flex">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
-                </div>
-
-                <div class="row g-4">
-                    <!-- Project 1 -->
-                    @foreach ($projects as $project)                        
-                        <div class="col-lg-6 gs_reveal_up">
-                            <x-home.project-card :project="$project" />
-                        </div>
-                    @endforeach
- 
-                </div>
-                
-                <div class="text-center mt-5 d-md-none gs_reveal">
-                    <a href="/projects" class="btn-custom btn-outline-custom">View All Works <i class="ph ph-arrow-right ms-2"></i></a>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">02</div>
+                <h3>Laravel Development</h3>
+                <p>Robust backend systems, complex domain logic, and clean MVC architecture with Laravel.</p>
             </div>
-        </section>
-
-
-        <!-- Stats Section -->
-        <!-- <section class="py-5 position-relative border-top border-bottom" style="border-color: rgba(255,255,255,0.05) !important; background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(30,41,59,0.9));">
-            <div class="container">
-                <div class="row text-center g-4">
-                    <div class="col-6 col-md-3 gs_reveal_scale">
-                        <h2 class="display-4 fw-bold text-gradient counter" data-target="50">0</h2>
-                        <p class="text-muted fw-medium text-uppercase tracking-wider small">Projects Done</p>
-                    </div>
-                    <div class="col-6 col-md-3 gs_reveal_scale" data-delay="0.1">
-                        <h2 class="display-4 fw-bold text-gradient counter" data-target="40">0</h2>
-                        <p class="text-muted fw-medium text-uppercase tracking-wider small">Happy Clients</p>
-                    </div>
-                    <div class="col-6 col-md-3 gs_reveal_scale" data-delay="0.2">
-                        <h2 class="display-4 fw-bold text-gradient counter" data-target="5">0</h2>
-                        <p class="text-muted fw-medium text-uppercase tracking-wider small">Years Exp.</p>
-                    </div>
-                    <div class="col-6 col-md-3 gs_reveal_scale" data-delay="0.3">
-                        <h2 class="display-4 fw-bold text-gradient counter" data-target="15">0</h2>
-                        <p class="text-muted fw-medium text-uppercase tracking-wider small">Technologies</p>
-                    </div>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">03</div>
+                <h3>Admin Dashboards</h3>
+                <p>Intuitive panels for managing content, users, and operations without friction.</p>
             </div>
-        </section> -->
-
-        <!-- Journey & Timeline Section -->
-        <section class="section-padding bg-darker">
-            <div class="container">
-                <div class="text-center mb-5 gs_reveal">
-                    <h2 class="section-title">My Journey</h2>
-                </div>
-                
-                <div class="row justify-content-center">
-                    <div class="col-12 gs_reveal_up">
-                        <div class="glass-card-non-bg p-4 p-md-5 neon-border position-relative overflow-hidden">
-                            <!-- Background glow inside card -->
-                            <div class="position-absolute top-0 end-0 translate-middle-y bg-gradient-custom opacity-10 rounded-circle" style="width: 300px; height: 300px; filter: blur(50px); z-index: 0;"></div>
-                            
-                            <div class="position-relative z-1 row g-4 align-items-center">
-                                <!-- Left Column: Role & Company -->
-                                <div class="col-lg-4 border-end border-secondary border-opacity-25 pe-lg-4">
-                                    <h4 class="text-white fw-bold mb-2">Web Designer</h4>
-                                    <h6 class="text-gradient mb-3">World Academy for Research & Development</h6>
-                                    <div class="d-inline-flex align-items-center bg-dark bg-opacity-50 px-3 py-2 rounded-pill tech-font small mb-4">
-                                        <i class="ph-fill ph-calendar-blank text-accent-cyan me-2"></i> Apr 2025 - Present
-                                    </div>
-                                    
-                                    <h6 class="text-white mb-3 small text-uppercase tracking-wider">Technologies</h6>
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25">HTML</span>
-                                        <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">CSS</span>
-                                        <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25">Bootstrap</span>
-                                        <span class="badge bg-opacity-10 bg-warning text-warning border border-warning border-opacity-25">JavaScript</span>
-                                        <span class="badge bg-opacity-10 bg-info text-info border border-info border-opacity-25">PHP</span>
-                                        <span class="badge bg-opacity-10 bg-primary text-primary border border-primary border-opacity-25">MySQL</span>
-                                        <span class="badge bg-opacity-10 bg-light text-light border border-light border-opacity-25">Laravel</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Right Column: Responsibilities -->
-                                <div class="col-lg-8 ps-lg-4">
-                                    <h6 class="text-white mb-3 small text-uppercase tracking-wider">Key Responsibilities & Achievements</h6>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-3 d-flex gap-3">
-                                            <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Redesigned and developed responsive websites using HTML, CSS, Bootstrap, and JavaScript for improved user experience.</span>
-                                        </li>
-                                        <li class="mb-3 d-flex gap-3">
-                                            <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Developed a cross-platform Android application with React Native (Expo) to support student engagement and internal workflows.</span>
-                                        </li>
-                                        <li class="mb-3 d-flex gap-3">
-                                            <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Developed and maintained dynamic web applications using PHP, Laravel, Blade, and MySQL to support academic and administrative operations at World Academy.</span>
-                                        </li>
-                                        <li class="d-flex gap-3">
-                                            <i class="ph-fill ph-caret-right text-accent-cyan mt-1"></i>
-                                            <span>Built and integrated RESTful APIs for a blog platform, enabling efficient content management and seamless frontend-backend communication.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">04</div>
+                <h3>Database Design</h3>
+                <p>Normalized, efficient schemas that protect integrity and perform under load.</p>
             </div>
-        </section>
-
-
-        <!-- Services Section -->
-        <section id="services" class="section-padding bg-darker">
-            <div class="container">
-                <div class="text-center mb-5 gs_reveal">
-                    <h2 class="section-title">Skills</h2>
-                    {{-- <p class="max-w-2xl mx-auto mt-3">Delivering high-quality web solutions tailored to your business needs.</p> --}}
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-browser fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Custom Web App</h4>
-                            <p class="">Building bespoke, scalable, and secure web applications from scratch using modern technologies.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-brackets-curly fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Laravel Development</h4>
-                            <p class="">Expertise in developing robust backend systems, complex logic, and MVC architecture using Laravel.</p>
-                        </div>
-                    </div>
-                    {{-- <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-plugs fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">REST API Development</h4>
-                            <p class="">Designing and building secure, fast, and documented APIs for mobile apps or third-party integrations.</p>
-                        </div>
-                    </div> --}}
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-layout fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Admin Dashboard</h4>
-                            <p class="">Creating intuitive and powerful admin panels for managing your application's data effortlessly.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-database fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Database Design</h4>
-                            <p class="">Architecting efficient and normalized database structures to ensure data integrity and performance.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient">
-                                <i class="ph-fill ph-bug fs-1"></i>
-                            </div>
-                            <h4 class="mb-3 text-white">Bug Fixing & Maint.</h4>
-                            <p class="">Identifying and resolving complex bugs, optimizing code, and providing ongoing support.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">05</div>
+                <h3>API Design & Integration</h3>
+                <p>Secure, documented REST APIs for mobile apps, third parties, and internal services.</p>
             </div>
-        </section>
-
-        <!-- Testimonials -->
-        <!-- <section class="section-padding overflow-hidden">
-            <div class="container">
-                <div class="text-center mb-5 gs_reveal">
-                    <h2 class="section-title">Client Feedback</h2>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-4 text-center h-100 position-relative mt-4">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Client" class="rounded-circle border border-3 border-info position-absolute top-0 start-50 translate-middle shadow-glow" style="width: 80px; height: 80px; object-fit: cover;">
-                            <div class="mt-4 pt-3">
-                                <i class="ph-fill ph-quotes text-gradient fs-1 opacity-50 mb-3 d-inline-block"></i>
-                                <p class="text-muted fst-italic">"Al-Amin is an exceptional Laravel developer. He completely revamped our backend architecture, improving load times by 40%. Highly recommended!"</p>
-                                <h6 class="text-white mb-0 mt-4">David Smith</h6>
-                                <span class="text-gradient small tech-font">CEO, TechNova</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up" data-delay="0.2">
-                        <div class="glass-card p-4 text-center h-100 position-relative mt-4">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Client" class="rounded-circle border border-3 border-info position-absolute top-0 start-50 translate-middle shadow-glow" style="width: 80px; height: 80px; object-fit: cover;">
-                            <div class="mt-4 pt-3">
-                                <i class="ph-fill ph-quotes text-gradient fs-1 opacity-50 mb-3 d-inline-block"></i>
-                                <p class="text-muted fst-italic">"Delivered our complex multi-vendor e-commerce platform ahead of schedule. The code quality is top-notch and communication was flawless."</p>
-                                <h6 class="text-white mb-0 mt-4">Sarah Jenkins</h6>
-                                <span class="text-gradient small tech-font">Founder, ShopEase</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">06</div>
+                <h3>Maintenance & Optimization</h3>
+                <p>Bug fixes, performance work, and ongoing support so systems stay healthy.</p>
             </div>
-        </section> -->
+        </div>
+    </div>
+</section>
 
-        <!-- CTA Section -->
-        <section class="py-5 bg-darker position-relative overflow-hidden">
-            <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 bg-gradient-custom opacity-10" style="filter: blur(150px); z-index: 1;"></div>
-            <div class="container position-relative z-2">
-                <div class="glass-card p-5 text-center neon-border gs_reveal_scale">
-                    <h2 class="display-5 fw-bold mb-4">Have an idea in mind?</h2>
-                    <p class="lead mb-5 max-w-2xl mx-auto">Let's collaborate and turn your vision into a stunning digital reality. I am currently available for freelance work.</p>
-                    <a href="/contact" class="btn-custom btn-primary-custom btn-lg fs-5 px-5">Let's Talk <i class="ph ph-paper-plane-tilt ms-2"></i></a>
-                </div>
-            </div>
-        </section>
+{{-- ============ CTA / CONTACT TEASER ============ --}}
+<section class="section" style="background: var(--bg-dark); color: #fff;">
+    <div class="container-site" style="text-align: center; max-width: 720px;">
+        <p class="eyebrow gs_reveal" style="color: rgba(255,255,255,0.45);">Next step</p>
+        <h2 class="section-title gs_reveal" style="color: #fff; margin-bottom: 1.25rem;">
+            Have a project in <em style="color: var(--accent);">mind</em>?
+        </h2>
+        <p class="gs_reveal_up" style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; font-size: 1.05rem;">
+            Tell me what you're building. I'll respond within a day with thoughts on approach and timeline.
+        </p>
+        <a href="/contact" class="btn btn-accent gs_reveal_up">Get in touch <i class="ph ph-arrow-right"></i></a>
+    </div>
+</section>
 
 @endsection

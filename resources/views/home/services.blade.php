@@ -2,71 +2,55 @@
 
 @section('content')
 
-        <section class="pt-5 pb-4">
-            <div class="container text-center pt-5">
-                <h1 class="display-4 fw-bold gs_reveal">My <span class="text-gradient">Services</span></h1>
-                <p class="lead  max-w-2xl mx-auto gs_reveal_up">Delivering high-quality web solutions tailored to your business needs.</p>
-            </div>
-        </section>
+<section class="page-header">
+    <div class="container-site">
+        <p class="eyebrow gs_reveal">Services</p>
+        <h1 class="gs_reveal">What I can <em>build</em></h1>
+        <p class="gs_reveal_up">Practical web solutions focused on Laravel backends, custom applications, and maintainable systems.</p>
+    </div>
+</section>
 
-        <!-- Services Grid -->
-        <section class="pb-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-browser fs-1"></i></div>
-                            <h4 class="mb-3 text-white">Custom Web App</h4>
-                            <p class="">Building bespoke, scalable, and secure web applications from scratch using modern technologies.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-brackets-curly fs-1"></i></div>
-                            <h4 class="mb-3 text-white">Laravel Development</h4>
-                            <p class="">Expertise in developing robust backend systems, complex logic, and MVC architecture using Laravel.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-plugs fs-1"></i></div>
-                            <h4 class="mb-3 text-white">REST API Development</h4>
-                            <p class="">Designing and building secure, fast, and documented APIs for mobile apps or third-party integrations.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-layout fs-1"></i></div>
-                            <h4 class="mb-3 text-white">Admin Dashboard</h4>
-                            <p class="">Creating intuitive and powerful admin panels for managing your application's data effortlessly.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-database fs-1"></i></div>
-                            <h4 class="mb-3 text-white">Database Design</h4>
-                            <p class="">Architecting efficient and normalized database structures to ensure data integrity and performance.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gs_reveal_up">
-                        <div class="glass-card p-5 h-100 neon-border">
-                            <div class="mb-4 text-gradient"><i class="ph-fill ph-bug fs-1"></i></div>
-                            <h4 class="mb-3 text-white">Bug Fixing & Maint.</h4>
-                            <p class="">Identifying and resolving complex bugs, optimizing code, and providing ongoing support.</p>
-                        </div>
-                    </div>
-                </div>
+<section class="section-tight" style="padding-top:0;">
+    <div class="container-site">
+        <div class="services-list">
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">01</div>
+                <h3>Custom Web Applications</h3>
+                <p>Bespoke, scalable applications from the ground up — modeled around your workflows and data.</p>
             </div>
-        </section>
-        
-        <!-- CTA -->
-        <section class="py-5 bg-darker">
-            <div class="container text-center">
-                <div class="glass-card p-5 neon-border gs_reveal_scale">
-                    <h2 class="fw-bold mb-4">Need a custom solution?</h2>
-                    <a href="contact.html" class="btn-custom btn-primary-custom btn-lg">Let's Talk <i class="ph ph-paper-plane-tilt ms-2"></i></a>
-                </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">02</div>
+                <h3>Laravel Development</h3>
+                <p>Robust backend systems, complex domain logic, and clean MVC architecture with Laravel.</p>
             </div>
-        </section>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">03</div>
+                <h3>Admin Dashboards</h3>
+                <p>Intuitive panels for managing content, users, and operations without friction.</p>
+            </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">04</div>
+                <h3>Database Design</h3>
+                <p>Normalized, efficient schemas that protect integrity and perform under load.</p>
+            </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">05</div>
+                <h3>API Design & Integration</h3>
+                <p>Secure, documented REST APIs for mobile apps, third parties, and internal services.</p>
+            </div>
+            <div class="service-item gs_reveal_up">
+                <div class="service-num">06</div>
+                <h3>Maintenance & Optimization</h3>
+                <p>Bug fixes, performance work, and ongoing support so systems stay healthy.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: center;" class="gs_reveal">
+            <p class="eyebrow" style="margin-bottom: 1rem;">Ready when you are</p>
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Let's talk about your next project</h2>
+            <a href="/contact" class="btn btn-primary">Get in touch <i class="ph ph-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
 
 @endsection
